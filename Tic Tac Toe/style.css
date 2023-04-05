@@ -1,0 +1,288 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  height: 100vh;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "CARTOON FREE", sans-serif;
+  line-height: 1.2;
+  padding: 0 2em;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-areas: "p0 g p1";
+  place-items: center;
+  grid-gap: 2em;
+}
+
+.game-wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 50vh;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  grid-area: g;
+}
+
+.square {
+  border-bottom: 5px solid rgba(0, 0, 0, 0.8);
+  border-left: 5px solid rgba(0, 0, 0, 0.8);
+  background-color: transparent;
+  transition: all 0.4s ease;
+}
+
+.square--border-remove-bottom {
+  border-bottom: none;
+}
+
+.square--border-remove-left {
+  border-left: none;
+}
+
+.square:hover,
+.square:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.cross {
+  background-image: url(./assets/cross-icon.png);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.circle {
+  background-image: url(./assets/circle.png);
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.game-name {
+  text-align: center;
+  font-size: 4em;
+  margin-top: -145px;
+}
+
+.player {
+  font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: transparent;
+  transition: all 0.4s ease;
+  padding: 0.5em 1em;
+}
+
+.player0 {
+  grid-area: p0;
+}
+
+.player1 {
+  grid-area: p1;
+}
+
+.player img {
+  width: 150px;
+  margin: 0 auto;
+}
+
+.player h2 {
+  text-align: center;
+}
+
+.player--active {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.score {
+  text-align: center;
+  border: 3px solid black;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  border-radius: 15px;
+  padding: 0.2em 0.5em;
+  line-height: 1.2;
+}
+.modal {
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  padding: 7em 7.5em;
+  line-height: 1.4;
+  text-align: center;
+  border-radius: 60px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  background-color: #f2f3f4;
+}
+
+.modal__header {
+  font-size: 4em;
+  margin-bottom: 0.5em;
+}
+
+.modal__desc {
+  font-size: 2em;
+}
+
+.modal__buttons {
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5em;
+}
+
+.modal__buttons p {
+  font-size: 1.5em;
+}
+
+.btn {
+  font-size: 1.25em;
+  font-family: "CARTOON FREE", sans-serif;
+  padding: 0.5em 2em;
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+  border: 2px solid black;
+  border-radius: 12px;
+  transform: scale(1);
+  transition: all 0.4s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  cursor: pointer;
+  background-color: #60acf8;
+  background-image: linear-gradient(62deg, #5cabfa 0%, #e0c3fc 100%);
+  transform: scale(1.1);
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  filter: blur(
+    0px
+  ); /*There is a bug with backdrop-filter: blur(), when resizing window. Adding filter blur() is a workaround this bug */
+  z-index: 5;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes slide-in {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 50%;
+  }
+}
+
+.modal.slide-in {
+  animation: slide-in 0.2s ease-out 0s forwards;
+}
+
+@media all and (max-width: 1050px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "g g"
+      "p0 p1";
+    grid-area: c;
+    grid-gap: 2em 0;
+    place-items: stretch;
+  }
+
+  .player img {
+    width: 100px;
+  }
+
+  .player {
+    font-size: 1.5em;
+  }
+  .intro {
+    grid-area: i;
+    margin-bottom: 2em;
+  }
+
+  .game-name {
+    margin-top: 0;
+    font-size: 2.8em;
+  }
+}
+
+@media all and (max-width: 800px) {
+  .player img {
+    width: 70px;
+  }
+  .modal {
+    padding: 3em 1em;
+    width: 95%;
+  }
+  .modal__header {
+    font-size: 2.4em;
+  }
+  .modal__desc {
+    font-size: 1.25em;
+  }
+  .modal__buttons {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .btn {
+    padding: 0.5em 1em;
+  }
+}
+
+@media all and (max-width: 550px) {
+  .cross {
+    background-size: 60%;
+  }
+  .circle {
+    background-size: 70%;
+  }
+}

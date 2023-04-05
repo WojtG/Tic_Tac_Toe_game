@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Wojtek" />
+    <meta
+      name="description"
+      content="Play the classic Tic-Tac-Toe game with your friend for free."
+    />
+    <meta
+      name="keywords"
+      content="game, Tic Tac Toe, Tic Tac Toe game, Noughts and Crosses"
+    />
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link href="https://fonts.cdnfonts.com/css/cartoon-free" rel="stylesheet" />
+  </head>
+  <body>
+    <section class="intro">
+      <h1 class="game-name">TIC TAC TOE</h1>
+    </section>
+    <section class="container">
+      <div class="player player--0 player--active">
+        <h2>Player</h2>
+        <img src="./assets/cross-icon.png" alt="" />
+        <p class="score">Score<br /><span class="score--0">0</span></p>
+      </div>
+      <div class="player player--1">
+        <h2>Player</h2>
+        <img src="./assets/circle.png" alt="" />
+        <p class="score">Score<br /><span class="score--1">0</span></p>
+      </div>
+      <div class="game-wrapper">
+        <div class="square square__1 square--border-remove-left"></div>
+        <div class="square square__2"></div>
+        <div class="square square__3"></div>
+        <div class="square square__4 square--border-remove-left"></div>
+        <div class="square square__5"></div>
+        <div class="square square__6"></div>
+        <div
+          class="square square__7 square--border-remove-left square--border-remove-bottom"
+        ></div>
+        <div class="square square__8 square--border-remove-bottom"></div>
+        <div class="square square__9 square--border-remove-bottom"></div>
+      </div>
+    </section>
+    <div class="modal hidden">
+      <h1 class="modal__header">
+        Congratulations,<br />
+        Player I wins!
+      </h1>
+      <p class="modal__desc">Press the button to continue</p>
+      <div class="modal__buttons">
+        <input class="btn btn--play-again" type="submit" value="Play Again" />
+        <p>or</p>
+        <input class="btn btn--restart" type="submit" value="Restart" />
+      </div>
+    </div>
+    <div class="overlay hidden"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
